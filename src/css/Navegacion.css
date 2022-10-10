@@ -1,0 +1,16 @@
+.barra-navegacion { 
+    background-color: #171a1d;
+    align-items: center;
+    justify-content: center;
+}
+
+.ml-auto {
+    align-items: center;
+    justify-content: center;
+}
+
+.header_logo { 
+    width: 150px;
+    height: 52px;
+}
+

@@ -1,0 +1,26 @@
+* {
+  margin: 0px; 
+   padding: 0px;
+ } /*Margen y Padding de 0 por si los navegadores tienen hojas de estilo predeterminadas*/
+ 
+ html, body {
+   font-size: 14px;
+   background-color: #f5f6f7; 
+  }
+ 
+ .App {
+    min-height: 100vh;/*Altura minima de la aplicación, permite que se adapte a la altura del navegador*/
+    flex-wrap: wrap; /*Si un elemento toma todo el ancho del contenedor entonces los otros elementos se ubican debajo*/
+    align-items: center;/*Centrar verticalmente*/
+    justify-content: center;/*Centrar horizontalmente*/
+
+  }
+  
+  .contenedor-principal {
+    min-height: 550px;/*Altura minima para que se adapte el contenedor*/
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+ 

@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+import Navegacion from './components/Navegacion';
+// import ListaSolicitudes from './components/ListaSolicitudes';
+import CrearSolicitudes from './components/CrearSolicitudes';
+import EditarSolicitudes from './components/EditarSolicitudes';
+import ModalVerSolicitud from './components/ModalVerSolicitud';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className='principal-container'>
+        <Router>
+            <Navegacion />
+            <Route path='/editar' exact component={EditarSolicitudes} />
+            <Route path='/modal' exact component={ModalVerSolicitud} /> {/*Por Radocado*/}
+            <Route path='/' exact component={CrearSolicitudes} />
+            <Route path='/listar' exact component={EditarSolicitudes} />
+        </Router>
+      </div>
+    </div>  
   );
 }
 
