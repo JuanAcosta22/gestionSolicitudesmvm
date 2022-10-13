@@ -1,9 +1,8 @@
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import Navegacion from './components/Navegacion';
-// import ListaSolicitudes from './components/ListaSolicitudes';
+import ListaSolicitudes from './components/ListaSolicitudes';
 import CrearSolicitudes from './components/CrearSolicitudes';
 import EditarSolicitudes from './components/EditarSolicitudes';
-import ModalVerSolicitud from './components/ModalVerSolicitud';
 
 function App() {
   return (
@@ -12,9 +11,8 @@ function App() {
         <Router>
             <Navegacion />
             <Route path='/editar' exact component={EditarSolicitudes} />
-            <Route path='/modal' exact component={ModalVerSolicitud} /> {/*Por Radocado*/}
             <Route path='/' exact component={CrearSolicitudes} />
-            <Route path='/listar' exact component={EditarSolicitudes} />
+            <Route path='/listar' exact component={ListaSolicitudes} />
         </Router>
       </div>
     </div>  

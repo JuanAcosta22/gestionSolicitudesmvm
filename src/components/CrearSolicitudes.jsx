@@ -2,8 +2,10 @@ import React from 'react';
 import { Form, Row, Col, FloatingLabel } from 'react-bootstrap';
 import '../css/CrearSolicitudes.css';
 
-function CrearSolicitudes() {
+export default function CrearSolicitudes() {
+
     return (
+
         <div className='contenedor-form'>
             <div className='card-body'>
             <div className='encabezado'>
@@ -42,7 +44,7 @@ function CrearSolicitudes() {
                             
                         <Form.Group as={Col} controlId='tipoSolicitud'>
                             <Form.Label>Tipo de solicitud:</Form.Label>
-                            <Form.Select defaultValue='-1'>
+                            <Form.Select>
                                 <option>-Elija una opción-</option>
                                 <option>PQRS</option>
                                 <option>Novedades</option>
@@ -67,5 +69,3 @@ function CrearSolicitudes() {
         </div>
     );
 }
-
-export default CrearSolicitudes;
