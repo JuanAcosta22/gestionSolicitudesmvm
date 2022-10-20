@@ -20,10 +20,7 @@ class SolicitudDataService {
     getTipoSolicitud() {
         return http.get('/api/tipoSolicitud')
     }
-}
 
-// const remove = id => {
-//     return http.delete(`/tutorials/${id}`);
-//     };
+}
 
 export default new SolicitudDataService();
