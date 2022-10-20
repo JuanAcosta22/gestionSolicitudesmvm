@@ -1,31 +1,29 @@
 import http from '../http-common';
 
-const getAll = () => {
-    return http.get("/solicitudes");
-    };
+class SolicitudDataService {
+    getAll() {
+        return http.get('/api/solicitudes');
+    }
   
-const get = id => {
-    return http.get(`/solicitud/${id}`);
-    };
+    get(id) {
+        return http.get(`/api/solicitudes/${id}`);
+    }
   
-const create = data => {
-    return http.post("/solicitudes", data);
-    };
+    create(data) {
+        return http.post('/api/solicitudes', data);
+    }
   
-const update = (id, data) => {
-    return http.put(`/solicitudes/${id}`, data);
-    };
+    update(id, data) {
+    return http.put(`/api/solicitudes/${id}`, data);
+    }
 
-const remove = id => {
-    return http.delete(`/tutorials/${id}`);
-    };
+    getTipoSolicitud() {
+        return http.get('/api/tipoSolicitud')
+    }
+}
 
-const SolicitudDataService = {
-    getAll,
-    get,
-    create,
-    update,
-    remove
-};
+// const remove = id => {
+//     return http.delete(`/tutorials/${id}`);
+//     };
 
-export default SolicitudDataService;
+export default new SolicitudDataService();

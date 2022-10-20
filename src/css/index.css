@@ -1,11 +1,13 @@
 * {
   margin: 0px; 
-   padding: 0px;
+  padding: 0px;
  } /*Margen y Padding de 0 por si los navegadores tienen hojas de estilo predeterminadas*/
  
  html, body {
-   font-size: 14px;
-   background-color: #f5f6f7; 
+  font-family: 'Montserrat', sans-serif;
+   font-size: 13px;
+   font-weight: 300;
+   line-height: 1.5;
   }
  
  .App {
@@ -13,6 +15,7 @@
     flex-wrap: wrap; /*Si un elemento toma todo el ancho del contenedor entonces los otros elementos se ubican debajo*/
     align-items: center;/*Centrar verticalmente*/
     justify-content: center;/*Centrar horizontalmente*/
+    background-color: #19191d;
 
   }
   
