@@ -66,7 +66,7 @@ export default function CrearSolicitudes() {
                 IdTipoSolicitud: response.data.IdTipoSolicitud,
                 Descripcion: response.data.Descripcion
             });
-            setSubmitted(true);
+            setSubmitted(false);
             console.log(response.data);
         })
         .catch(e => {
@@ -76,7 +76,7 @@ export default function CrearSolicitudes() {
 
     const newSolicitud = () => {
         setSolicitud(initialSolicitudState);
-        setSubmitted(false);
+        setSubmitted(true);
     };
 
     return (
@@ -108,8 +108,7 @@ export default function CrearSolicitudes() {
                                     type='email' 
                                     name='CorreoSolicitante' 
                                     id='CorreoSolicitante' 
-                                    placeholder='Email:' 
-                                    pattern='/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/'
+                                    placeholder='Email:'
                                     required 
                                     value={solicitud.CorreoSolicitante} 
                                     onChange={handleInputChange}                                    

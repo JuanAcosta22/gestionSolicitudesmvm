@@ -1,24 +1,28 @@
-import http from '../http-common';
+import http from '../https-common';
 
 class SolicitudDataService {
     getAll() {
-        return http.get('/api/solicitudes');
+        return http.get('/solicitudes');
     }
   
     get(id) {
-        return http.get(`/api/solicitudes/${id}`);
+        return http.get(`/solicitud/${id}`);
     }
   
     create(data) {
-        return http.post('/api/solicitudes', data);
+        return http.post('/solicitudes', data);
     }
   
     update(id, data) {
-    return http.put(`/api/solicitudes/${id}`, data);
+    return http.put(`/solicitud/${id}`, data);
     }
 
     getTipoSolicitud() {
-        return http.get('/api/tipoSolicitud')
+        return http.get('/tipoSolicitud');
+    }
+
+    remove(id) {
+        return http.delete(`/solicitud/${id}`);
     }
 
 }

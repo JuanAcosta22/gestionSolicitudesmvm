@@ -11,7 +11,7 @@ export default function ListaSolicitud() {
   }, []);
 
   const retrievesolicitud = () => {
-    SolicitudDataService.get()
+    SolicitudDataService.getAll()
       .then(response => {
         setsolicitud(response.data);
         console.log(response.data);
@@ -55,7 +55,7 @@ export default function ListaSolicitud() {
                     <td>{ solicitud.TelefonoSolicitante }</td>
                     <td>{ solicitud.NombreEmpresa }</td>
                     <td>{ solicitud.IDResponsable }</td>
-                    <td>{ solicitud.IdTipoSolicitud }</td>
+                    <td>{ solicitud.IDTipoSolicitud }</td>
                     <td>{ solicitud.IDEstado }</td>
                     <td>{ solicitud.FechaRespuesta }</td>
                     <td>{ solicitud.Descripcion }</td>
