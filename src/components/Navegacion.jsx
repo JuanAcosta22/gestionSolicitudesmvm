@@ -12,7 +12,6 @@ const Navegacion = () => {
             </Navbar.Brand>
             <Nav className="ml-auto">
               <Nav.Link className='crear' href='/'>Crear solicitudes</Nav.Link>
-              <Nav.Link className='ver' href='/lista'>Ver tus solicitudes</Nav.Link>
               <Nav.Link className='login' href='/gestion'><input type='submit' value='Iniciar Sesión' className='button' /></Nav.Link>
             </Nav>
           </Container>

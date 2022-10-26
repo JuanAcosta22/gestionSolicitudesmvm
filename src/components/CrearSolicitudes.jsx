@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SolicitudDataService from '../services/SolicitudDataService';
 import '../css/CrearSolicitudes.css';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function CrearSolicitudes() {
@@ -22,7 +23,7 @@ export default function CrearSolicitudes() {
           console.log(e);
         });
     };
-
+    let navigate = useNavigate();
     const initialSolicitudState = {
         id: null,
         NombreSolicitante: '',
@@ -35,7 +36,6 @@ export default function CrearSolicitudes() {
     };
 
     const [solicitud, setSolicitud] = useState(initialSolicitudState);
-    const [submitted, setSubmitted] = useState(false);
 
     const handleInputChange = event => {
         const { name, value } = event.target;
@@ -66,28 +66,16 @@ export default function CrearSolicitudes() {
                 IdTipoSolicitud: response.data.IdTipoSolicitud,
                 Descripcion: response.data.Descripcion
             });
-            setSubmitted(false);
             console.log(response.data);
+        }).then(() => {
+            navigate('/gestion')
         })
         .catch(e => {
             console.log(e);
         });
     };
 
-    const newSolicitud = () => {
-        setSolicitud(initialSolicitudState);
-        setSubmitted(true);
-    };
-
     return (
-        <div className='page-content'>
-
-            {submitted ? (
-                <div className='alert'>
-                    <h4>...¡Solicitud registrada!...</h4>
-                    <input type='submit' onClick={newSolicitud} className='aceptar' value='Aceptar' />
-                </div>) : (
-
             <div className='form-content'>
                 <h2>Formulario de solicitudes</h2>
                 <form className='form-detail' id='formSol'>
@@ -105,14 +93,15 @@ export default function CrearSolicitudes() {
                         <div className='form-group'>
                             <div className='form-row form-row-1'>
                                 <input 
-                                    type='email' 
+                                    type='text' 
                                     name='CorreoSolicitante' 
                                     id='CorreoSolicitante' 
                                     placeholder='Email:'
-                                    required 
+                                    pattern=''
                                     value={solicitud.CorreoSolicitante} 
-                                    onChange={handleInputChange}                                    
-                                    />
+                                    onChange={handleInputChange}
+                                    required                                
+                                />
                             </div>
                             <div className='form-row form-row-2'>
                                 <input type='text' name='TelefonoSolicitante' id='TelefonoSolicitante' placeholder='Telefono:' value={solicitud.TelefonoSolicitante} onChange={handleInputChange} required />
@@ -149,8 +138,6 @@ export default function CrearSolicitudes() {
                         </div>
                     </div>
                 </form>
-            </div>
-                )}
         </div>
     );
 }

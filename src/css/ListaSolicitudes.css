@@ -106,3 +106,9 @@ h2 {
 .custom-table tbody tr.active th a, .custom-table tbody tr.active td a, .custom-table tbody tr:hover th a, .custom-table tbody tr:hover td a {
   color: #b8c903;
 }
+
+.celdaAsignado{
+  word-break: break-word !important;
+  white-space: nowrap !important;
+  width : 50% !important;
+  }

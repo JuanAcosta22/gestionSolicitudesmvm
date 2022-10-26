@@ -21,18 +21,23 @@ h2, h4{
 
 .form-content  {
 	background: #19191d;
-	max-width: 100%;
-	margin: 0 5% 0 5%;
 	position: relative;
+  box-sizing: content-box;
+  width: 100%;
+  
 }
 
 .form-detail {
-	max-width: 100%;
 	background: #2e2e36;
   color: #fff;
   position: relative;
-  display: flex;
+  display: flex; 
   padding-top: 40px;
+  justify-content: center;
+	align-items: center;
+  box-sizing: content-box;
+  margin-left: 27%;
+  margin-right: 27%;
 }
 
 .form-group {

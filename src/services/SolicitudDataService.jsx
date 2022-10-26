@@ -10,7 +10,7 @@ class SolicitudDataService {
     }
   
     create(data) {
-        return http.post('/solicitudes', data);
+        return http.post('/solicitud', data);
     }
   
     update(id, data) {
@@ -19,6 +19,14 @@ class SolicitudDataService {
 
     getTipoSolicitud() {
         return http.get('/tipoSolicitud');
+    }
+
+    getResponsable() {
+        return http.get('/responsable');
+    }
+
+    getNombre() {
+        return http.get('/nombre');
     }
 
     remove(id) {

@@ -1,21 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Navegacion from './components/Navegacion';
-import ListaSolicitud from './components/ListaSolicitud';
 import CrearSolicitudes from './components/CrearSolicitudes';
 import GestionarSolicitudes from './components/GestionarSolicitudes';
-// import AsignarSolicitudes from './components/AsignarSolicitudes';
+import Update from './components/update';
+import Delete from './components/delete';
 
 function App() {
   return (
     <div className="App">
       <div className='principal-container'>
         <Router>
-            <Navegacion />           
-            <Route exact path='/' component={CrearSolicitudes} />
-            <Route exact path='/gestion' component={GestionarSolicitudes} />
-            <Route exact path='/lista' component={ListaSolicitud} />
-            {/* <Route exact path='/asignar' component={AsignarSolicitudes} /> */}
+            <Navegacion />
+            <Routes>          
+              <Route exact path='/' element={ <CrearSolicitudes />} />
+              <Route exact path='/gestion' element={ <GestionarSolicitudes />} />
+              <Route exact path='/update' element={ < Update /> } />
+              <Route exact path='/delete' element={ < Delete/> } />
+            </Routes> 
         </Router>
       </div>
     </div>  

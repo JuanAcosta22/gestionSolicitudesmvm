@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import SolicitudDataService from '../services/SolicitudDataService';
 import '../css/ListaSolicitudes.css';
+import { Link } from 'react-router-dom';
 
 export default function GestionarSolicitudes() {
 
   const [solicitudes, setSolicitudes] = useState([]);
 
-  useEffect(() => {
-    retrieveSolicitudes();
-  }, []);
+    useEffect(() => {
+        retrieveSolicitudes();
+    }, []);
 
   const retrieveSolicitudes = () => {
     SolicitudDataService.getAll()
@@ -19,7 +20,38 @@ export default function GestionarSolicitudes() {
       .catch(e => {
         console.log(e);
       });
-  };
+    };
+
+    const setData = (solicitud) => {
+      let { IDSolicitud, Radicado, FechaSolicitud, NombreSolicitante, ApellidoSolicitante, CorreoSolicitante, TelefonoSolicitante, NombreEmpresa, IDResponsable, IdTipoSolicitud, IDEstado, FechaRespuesta, Descripcion } = solicitud;
+      localStorage.setItem('IDSolicitud', IDSolicitud);
+      localStorage.setItem('Radicado', Radicado);
+      localStorage.setItem('FechaSolicitud', FechaSolicitud);
+      localStorage.setItem('NombreSolicitante', NombreSolicitante);
+      localStorage.setItem('ApellidoSolicitante', ApellidoSolicitante);
+      localStorage.setItem('CorreoSolicitante', CorreoSolicitante);
+      localStorage.setItem('TelefonoSolicitante', TelefonoSolicitante);
+      localStorage.setItem('NombreEmpresa', NombreEmpresa);
+      localStorage.setItem('IDResponsable', IDResponsable);
+      localStorage.setItem('IdTipoSolicitud', IdTipoSolicitud);
+      localStorage.setItem('IDEstado', IDEstado);
+      localStorage.setItem('FechaRespuesta', FechaRespuesta);
+      localStorage.setItem('Descripcion', Descripcion)
+  }
+
+  const getData = () => {
+      SolicitudDataService.getAll()
+          .then((getData) => {
+              setSolicitudes(getData.data);
+          })
+  }
+
+  const onDelete = (id) => {
+      SolicitudDataService.remove(id)
+      .then(() => {
+          getData();
+      })
+  }
 
   return (
     <div className='content'>    
@@ -41,25 +73,36 @@ export default function GestionarSolicitudes() {
                 <th scope='col'>Estado Solicitud</th>
                 <th scope='col'>Fecha Respuesta</th>
                 <th scope='col'>Detalle Solicitud</th>
+                <th scope='col'>Edición</th>
             </tr>
           </thead>
               <tbody>
-                <tr className='spacer'><td colspan='100'></td></tr>
+                <tr className='spacer'><td colSpan='100'></td></tr>
                 { solicitudes.map ( solicitud => (
                   <tr key= { solicitud.IDSolicitud }>
-                    <td><a href='/editar'>{ solicitud.Radicado }</a></td>
+                    <td>{ solicitud.Radicado }</td>
                     <td>{ solicitud.FechaSolicitud }</td>
                     <td>{ solicitud.NombreSolicitante }</td>
                     <td>{ solicitud.ApellidoSolicitante }</td>
                     <td>{ solicitud.CorreoSolicitante }</td>
                     <td>{ solicitud.TelefonoSolicitante }</td>
                     <td>{ solicitud.NombreEmpresa }</td>
-                    <td>{ solicitud.IDResponsable }</td>
-                    <td>{ solicitud.IdTipoSolicitud }</td>
-                    <td>{ solicitud.IDEstado }</td>
-                    <td>{ solicitud.FechaRespuesta }</td>
-                    <td>{ solicitud.Descripcion }</td>
-                  </tr>
+                    <td>{ (solicitud.IDResponsable === 4) ? 'Fabian':(solicitud.IDResponsable === 5) ? 'Juan':(solicitud.IDResponsable === 6) ? 'Daniel': ''}</td>
+                    <td>{ (solicitud.IdTipoSolicitud === 1) ? 'PQR':(solicitud.IdTipoSolicitud === 2) ? 'Novedades':'Desarrollo'}</td>
+                    <td>{ (solicitud.IDEstado === 1) ? 'Pendiente':(solicitud.IDEstado === 2) ? 'Resuelto':'Rechazado'}</td>
+                    <td>{ solicitud.FechaRespuesta}</td>
+                    <td className="celdaAsignado">{ solicitud.Descripcion }</td>
+                    <td>
+                      <div className="mb-3">
+                        <Link to='/update'>
+                          <button onClick={() => setData(solicitud)} className="btn btn-dark">Editar</button>
+                        </Link>
+                      </div>
+                      <div className="mb-3">
+                        <button onClick={() => onDelete(solicitud.IDSolicitud)} className="btn btn-danger">Borrar</button>
+                      </div>
+                    </td>
+                  </tr>                  
                 ))}
               </tbody>
             </table>
